@@ -38,10 +38,6 @@ public class PointController {
 		User user = userRepository.findById(UUID.fromString(requestPointDto.getUserId()))
 			.orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
 
-		List<PointHistory> pointEvents = pointService.findPointEvents(user, pageable);
-
-		log.info("pointEvents : {}", pointEvents.size());
-
 		return ResponseEntity.ok(pointService.findPointEvents(user, pageable));
 	}
 }
